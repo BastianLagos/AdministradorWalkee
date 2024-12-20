@@ -1,0 +1,156 @@
+.body-login {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: url('../images/administracion.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.body-login::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    z-index: 0;
+}
+
+.container-login {
+    position: relative;
+    background-color: white;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 380px;
+    padding: 20px; /* Reduce el padding para menos espacio interno */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    z-index: 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container-login:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.logo-login {
+    display: block;
+    margin: 0 auto 10px auto; /* Reduce el margen inferior del logo */
+    width: 80px; /* Reduce el tamaño del logo */
+    height: auto;
+}
+
+.h1-login {
+    font-size: 1.5em; /* Reduce el tamaño de la fuente del título */
+    margin-bottom: 15px; /* Reduce el margen inferior del título */
+}
+
+.form-control-login {
+    width: 100%;
+    padding: 8px; /* Reduce el padding del campo de entrada */
+    margin: 5px 0; /* Reduce el margen vertical del campo de entrada */
+    border: 2px solid #33acff;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #f0f8ff;
+}
+
+.btn-primary {
+    background-color: #FA9580;
+    color: white;
+    border: none;
+    padding: 8px; /* Reduce el padding del botón */
+    border-radius: 5px;
+    width: 100%;
+    cursor: pointer;
+    font-size: 15px; /* Reduce un poco el tamaño de fuente */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 10px; /* Reduce el margen superior del botón */
+}
+
+.btn-primary:hover {
+    background-color: #33acff;
+    transform: translateY(-2px);
+}
+
+.alert {
+    color: red;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+.password-container {
+    position: relative; /* Para permitir posicionamiento absoluto del icono dentro */
+    margin: 10px 0;
+}
+
+.form-control-login {
+    width: 100%;
+    padding: 10px;
+    padding-right: 40px; /* Espacio para el icono de ojo */
+    margin: 10px 0;
+    border: 2px solid #33acff;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #f0f8ff;
+    text-align: left; /* Alinea el texto del input a la izquierda */
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px; /* Ubica el icono en el borde derecho dentro del input */
+    top: 62%; /* Ajusta este valor para centrar verticalmente el icono */
+    transform: translateY(-50%); /* Mantiene el icono centrado verticalmente */
+    cursor: pointer;
+    color: #333;
+    font-size: 1.2em;
+    z-index: 2;
+}
+
+.error-message {
+    background-color: #ffdddd; /* Fondo rojo claro */
+    color: #d9534f; /* Texto rojo oscuro */
+    border: 1px solid #d9534f; /* Borde rojo */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px; /* Espaciado interno */
+    margin: 10px 0; /* Separación con otros elementos */
+    font-size: 0.9em; /* Tamaño de fuente */
+    text-align: center; /* Centra el texto */
+    position: relative; /* Para posicionar la equis */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    animation: fadeIn 0.5s ease; /* Animación de entrada */
+}
+
+.error-message .close-error {
+    position: absolute;
+    top: 50%; /* Centra verticalmente */
+    right: 10px; /* Posición desde el borde derecho */
+    transform: translateY(-50%); /* Ajuste para centrar completamente */
+    font-size: 1.2em; /* Tamaño de la equis */
+    font-weight: bold; /* Equís más visible */
+    color: #d9534f; /* Color rojo oscuro */
+    cursor: pointer; /* Cambia el cursor a "clickeable" */
+    transition: color 0.3s ease; /* Transición para efecto hover */
+}
+
+.error-message .close-error:hover {
+    color: #c9302c; /* Cambia a un rojo más oscuro al pasar el cursor */
+}
+
+/* Animación para el mensaje */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

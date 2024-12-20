@@ -1,0 +1,824 @@
+/* Contenedor principal para el menú de administración */
+.menu-admin-container {
+  display: flex;
+  height: 100vh;
+  position: relative;
+}
+
+/* Contenedor principal para la barra de búsqueda */
+.search-bar-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espaciado entre el input y el botón */
+}
+
+/* Estilo para la barra de búsqueda con gradiente y sombra */
+.search-bar-input {
+  width: 100%; /* Ancho completo */
+  padding: 12px 20px;
+  font-size: 16px; /* Tamaño de fuente */
+  font-family: 'Arial', sans-serif; /* Fuente similar */
+  border-radius: 15px; /* Bordes redondeados */
+  border: 1px solid #ddd; /* Borde tenue */
+  background: linear-gradient(to bottom, #ffffff, #e6edf8); /* Fondo con gradiente */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+  transition: box-shadow 0.3s ease, background-color 0.3s ease; /* Transiciones suaves */
+}
+
+/* Efecto al enfocar */
+.search-bar-input:focus {
+  background: linear-gradient(to bottom, #ffffff, #dfe9f3); /* Fondo más claro */
+  box-shadow: 0px 6px 10px rgba(0, 123, 255, 0.3); /* Sombra más intensa */
+  border-color: #007bff; /* Color de borde azul */
+  outline: none; /* Sin borde adicional */
+}
+
+/* Placeholder con estilo similar */
+.search-bar-input::placeholder {
+  color: #666; /* Texto tenue */
+  font-style: italic; /* Estilo cursivo */
+}
+
+/* Botón Moderno para Limpiar */
+.search-bar-clear-button {
+  padding: 12px 20px; /* Tamaño cómodo para el botón */
+  font-size: 16px; /* Texto legible y elegante */
+  font-family: 'Arial', sans-serif; /* Fuente sencilla y profesional */
+  font-weight: bold; /* Texto en negrita */
+  color: white; /* Texto blanco */
+  background: linear-gradient(135deg, #ff7b7b, #ff4d4d); /* Degradado elegante */
+  border: none; /* Sin bordes */
+  border-radius: 12px; /* Bordes redondeados */
+  cursor: pointer; /* Indicador de clic */
+  box-shadow: 0px 4px 8px rgba(255, 77, 77, 0.2); /* Sombra suave */
+  transition: all 0.3s ease; /* Transición suave en todos los cambios */
+}
+
+.search-bar-clear-button:hover {
+  background: linear-gradient(135deg, #ff4d4d, #e60000); /* Degradado más oscuro al pasar el mouse */
+  box-shadow: 0px 6px 12px rgba(230, 0, 0, 0.3); /* Sombra más fuerte al pasar el mouse */
+  transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+}
+
+.search-bar-clear-button:active {
+  background: #cc0000; /* Color sólido al hacer clic */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra reducida */
+  transform: scale(0.98); /* Efecto de pulsación */
+}
+
+/* Agregar margen inferior a la barra de búsqueda */
+.search-bar-container {
+  margin-bottom: 20px; /* Ajusta la distancia entre la barra y las tarjetas */
+}
+
+/* Opcional: Espaciado adicional para las tarjetas */
+.collaborator-card {
+  margin-top: 10px; /* Margen entre cada tarjeta si hay más de una */
+}
+
+/* Barra lateral del menú de administración */
+.menu-admin-sidebar {
+  width: 250px;
+  background-color: #333;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: 0;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+.menu-options {
+  flex-grow: 1; /* Ocupa el espacio restante para empujar el botón hacia abajo */
+}
+
+.menu-admin-welcome {
+  margin: 0 0 20px;
+  font-size: 1.2em;
+  color: #e0e0e0;
+}
+
+/* Estilos para el menú de navegación */
+.menu-admin-nav {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-admin-nav-item {
+  padding: 12px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  position: relative;
+  font-size: 16px;
+}
+
+.menu-admin-content-section {
+  font-size: 20px;
+  transition: font-size 0.3s;
+}
+
+.menu-admin-nav-item-active {
+  background-color: #555;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.menu-admin-nav-item:hover {
+  background-color: #444;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.menu-admin-logout-button {
+  margin-top: auto; /* Empuja el botón hacia abajo */
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.3s;
+  font-weight: bold;
+
+  width: 100%; /* Ocupa todo el ancho del contenedor */
+  text-align: center; /* Centra el texto dentro del botón */
+  box-sizing: border-box; /* Asegura que padding y bordes estén incluidos en el ancho */
+}
+
+.menu-admin-logout-button:hover {
+  background-color: #c9302c;
+  transform: scale(1.05);
+}
+
+/* Estilo para el contenido principal */
+.menu-admin-content {
+  margin-left: 250px;
+  padding: 20px;
+  flex: 1;
+  position: relative;
+}
+
+/* Estilo para la barra de encabezado */
+.menu-admin-header {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  color: #333;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ddd;
+  border-radius: 5px;
+}
+
+.menu-admin-logo {
+  height: 40px;
+  margin-right: 20px;
+}
+
+.menu-admin-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Estilo para los submenús */
+.menu-admin-statistics-submenu,
+.menu-admin-collaborator-submenu,
+.menu-admin-owner-submenu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  background-color: #444;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.menu-admin-statistics-submenu-item,
+.menu-admin-collaborator-submenu-item,
+.menu-admin-owner-submenu-item {
+  padding: 12px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  font-size: 16px;
+}
+
+.menu-admin-statistics-submenu-item-active,
+.menu-admin-collaborator-submenu-item-active,
+.menu-admin-owner-submenu-item-active {
+  background-color: #555;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.menu-admin-statistics-submenu-item:hover,
+.menu-admin-collaborator-submenu-item:hover,
+.menu-admin-owner-submenu-item:hover {
+  background-color: #444;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilos para la tarjeta de colaborador */
+.menu-admin-content-section .collaborator-card {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 10px;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  background-color: #f4f4f9;
+  margin-bottom: 20px;
+}
+
+/* Encabezado de la tarjeta */
+.collaborator-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+/* Contenedor de la imagen de perfil */
+.menu-admin-content-section .collaborator-image {
+  width: 200px; /* Tamaño más grande para la imagen */
+  height: 200px;
+  border-radius: 50%;
+  margin-left: 30px;
+  margin-top: 10px;
+  overflow: hidden;
+  border: 3px solid #007bff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Imagen de perfil */
+.menu-admin-content-section .collaborator-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Información del colaborador */
+.collaborator-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+/* Detalles expandidos */
+.collaborator-expanded {
+  grid-column: span 2;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #ccc;
+}
+
+.collaborator-text-info, .collaborator-media-info, .collaborator-bank-info {
+  width: 30%;
+}
+
+/* Estilo del botón */
+.collaborator-actions {
+  grid-column: span 2;
+  display: flex;
+  justify-content: center; /* Centrado */
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.collaborator-button {
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para el botón "Ver más detalles" */
+.collaborator-button:nth-of-type(1) {
+  background-color: #007bff;
+  color: white;
+}
+
+.collaborator-button:nth-of-type(1):hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+/* Estilo para el botón "Deshabilitar" en rojo */
+.disable-button {
+  background-color: #d9534f;
+  color: white;
+  width: 160px;
+  height: 47px;
+}
+
+.disable-button:hover {
+  background-color: #c9302c;
+  transform: scale(1.05);
+}
+
+/* Estilo para el botón "Habilitar" en verde */
+.enable-button {
+  background-color: #28a745;
+  color: white;
+  width: 160px;
+  height: 47px;
+}
+
+.enable-button:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+/* Estilo para el botón "Aceptar" en verde */
+.approve-button {
+  background-color: #28a745;
+  color: white;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  width: 160px;
+  height: 47px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Profundidad */
+}
+
+.approve-button:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+/* Estilo para el botón "Rechazar" en rojo */
+.reject-button {
+  background-color: #d9534f;
+  color: white;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  width: 160px;
+  height: 47px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Profundidad */
+}
+
+.reject-button:hover {
+  background-color: #c9302c;
+  transform: scale(1.05);
+}
+
+.notification-icons {
+  display: flex;
+  gap: 20px;
+  margin-left: auto;
+}
+
+.notification-icon-container {
+  width: 50px; /* Ajusta el ancho según lo que prefieras */
+  height: 50px; /* Ajusta la altura según lo que prefieras */
+  display: flex;
+  align-items: center;
+  position: relative;
+  justify-content: center;
+  background-color: #f0f0f0; /* Color de fondo del ovalo */
+  border: 2px solid #007bff; /* Borde del ovalo */
+  border-radius: 50%; /* Hace que sea ovalado/circular */
+  transition: background-color 0.3s ease;
+}
+
+.notification-icon-container:hover {
+  transform: scale(1.1); /* Hace que el icono crezca ligeramente */
+}
+
+.notification-icon-container i {
+  font-size: 1.5rem; /* Ajusta el tamaño del ícono */
+  color: #333; /* Color del ícono */
+}
+
+/* Fondo de color para notificaciones de colaboradores */
+.notification-icon-container:nth-child(1),
+.notification-icon-container:nth-child(2) {
+  background-color: #FA9580; /* Color para colaboradores */
+}
+
+/* Fondo de color para notificaciones de dueños de perros */
+.notification-icon-container:nth-child(3) {
+  background-color: #91B44E; /* Color para dueños de perros */
+}
+
+.grafico-container {
+  text-align: center; /* Centrar el título */
+  margin: 20px 0; /* Espaciado alrededor del contenedor */
+}
+
+.grafico-cuadro {
+  width: 800px; /* Ajusta el ancho */
+  height: 400px auto; /* Ajusta la altura */
+  border: 2px solid #ccc; /* Borde alrededor del gráfico */
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 20px; /* Espacio interior para evitar que el gráfico toque los bordes */
+  background-color: #f9f9f9; /* Color de fondo */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para darle un efecto de elevación */
+  margin: 20px auto; /* Centramos el gráfico */
+}
+
+/* Estilo del puntito rojo de notificación */
+.notification-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
+  animation: blink 1.5s infinite;
+  padding: 7px;
+}
+
+/* Animación de parpadeo */
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.notification-badge-owner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
+  animation: blink 1.5s infinite;
+  padding: 7px;
+}
+
+.year-navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.year-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.year-button i {
+  font-size: 40px; /* Ajusta el tamaño del icono */
+  color: #007bff; /* Color azul de Bootstrap */
+  transition: color 0.3s ease;
+}
+
+.year-button i:hover {
+  color: #0056b3; /* Oscurece el color en hover */
+}
+
+.year-button:hover {
+  transform: scale(1.1); /* Crece ligeramente al pasar el mouse */
+}
+
+.year-label {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 20px;
+}
+
+/* Estilos para el modal de la imagen ampliada */
+.modal {
+  display: none; /* Oculto por defecto */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9); /* Fondo oscuro */
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 500px;
+  animation: zoom 0.6s; /* Animación al abrir */
+}
+
+@keyframes zoom {
+  from { transform: scale(0) }
+  to { transform: scale(1) }
+}
+
+/* Estilo para el botón de cerrar el modal */
+.close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.collaborator-image img:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Configuración para la superposición del modal */
+.ReactModal__Overlay {
+  background-color: rgba(0, 0, 0, 0.6) !important; /* Fondo oscuro con transparencia */
+  backdrop-filter: blur(5px); /* Efecto de desenfoque */
+  transition: opacity 0.3s ease-in-out !important; /* Transición suave */
+  z-index: 1000 !important; /* Asegura que el modal esté encima de otros elementos */
+}
+
+/* Fondo del modal */
+.modern-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* Fondo oscuro con transparencia */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+/* Contenedor del contenido del modal */
+.modal-content {
+  background: #fff; /* Fondo blanco */
+  width: 90%;
+  max-width: 600px; /* Ancho máximo */
+  padding: 25px;
+  border-radius: 15px; /* Bordes redondeados */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Sombra suave */
+  position: relative;
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Transiciones suaves */
+}
+
+/* Título del modal */
+.modal-title {
+  font-size: 1.8em; /* Tamaño de fuente grande */
+  font-weight: bold;
+  color: #333; /* Color del texto */
+  margin-bottom: 15px; /* Espaciado inferior */
+  text-align: center;
+  text-transform: uppercase; /* Mayúsculas */
+  letter-spacing: 1px; /* Espaciado de letras */
+}
+
+/* Estilo del textarea */
+.modal-textarea {
+  width: 100%;
+  min-height: 100px; /* Mayor altura mínima */
+  padding: 10px;
+  border: 2px solid #7b1fa2; /* Borde en color llamativo */
+  border-radius: 8px;
+  font-size: 1.1em;
+  margin-bottom: 20px;
+  resize: vertical; /* Permitir ajustar la altura */
+  outline: none;
+  transition: border 0.3s ease; /* Efecto suave en el borde */
+}
+
+/* Cambia el borde del textarea cuando está en foco */
+.modal-textarea:focus {
+  border-color: #9c27b0; /* Color destacado */
+}
+
+/* Contenedor de los botones */
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px; /* Espacio entre botones */
+}
+
+/* Estilo de los botones */
+.modal-button {
+  padding: 10px 25px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease; /* Efectos suaves */
+  flex: 1; /* Ambos botones ocupan el mismo espacio */
+}
+
+/* Botón para enviar */
+.modal-button.send {
+  background: #4caf50; /* Color verde */
+  color: #fff;
+  font-weight: bold;
+}
+
+.modal-button.send:hover {
+  background: #388e3c; /* Más oscuro al pasar el cursor */
+  transform: scale(1.05); /* Aumenta ligeramente */
+}
+
+/* Botón para cancelar */
+.modal-button.cancel {
+  background: #f44336; /* Color rojo */
+  color: #fff;
+  font-weight: bold;
+}
+
+.modal-button.cancel:hover {
+  background: #d32f2f; /* Más oscuro al pasar el cursor */
+  transform: scale(1.05); /* Aumenta ligeramente */
+}
+
+/* Animación para el modal */
+.modern-modal .modal-content {
+  transform: scale(0.95);
+  opacity: 0;
+  animation: fadeIn 0.3s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Contenedor principal del modal */
+.modal-content-horizontal {
+  background: #f9f9f9; /* Fondo claro */
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 800px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra suave */
+  position: relative;
+  overflow-y: auto;
+  max-height: 90vh;
+}
+
+/* Contenedor de la información de la mascota */
+.pet-info-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start; /* Alinear hacia arriba para que los textos comiencen al mismo nivel */
+  justify-content: space-between;
+  gap: 20px; /* Espacio entre imagen y texto */
+}
+
+/* Ajuste de imagen */
+.pet-image-horizontal img {
+  width: 100%;
+  max-width: 280px; /* Ajustar el ancho máximo */
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  object-fit: cover;
+}
+
+/* Ajustar los datos de la mascota más a la izquierda */
+.pet-info-horizontal {
+  flex: 1; /* Hacer que ocupe el espacio disponible */
+  padding-right: 10px; /* Un poco de margen interno para separar del borde derecho */
+}
+
+/* Estilo de botones de navegación */
+.modal-navigation {
+  display: flex;
+  justify-content: space-between; /* Colocar los botones en extremos opuestos */
+  margin-top: 20px;
+}
+
+/* Botones de navegación */
+.modal-navigation button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal-navigation button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* Botón de cerrar (`X`) */
+.close-modal-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.close-modal-button:hover {
+  color: #e74c3c;
+  transform: rotate(90deg);
+}
+
+.modal-title {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.modal-button.cancel {
+  background-color: #d9534f;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: block;
+  margin: 0 auto;
+}
+
+.modal-button.cancel:hover {
+  background-color: #c9302c;
+}
+
+.modal-content p {
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.no-requests-message {
+  text-align: center;
+  font-size: 1.2em;
+  color: #666;
+  margin-top: 20px;
+}
+
+/* Estilo del contenedor del spinner */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Para ocupar toda el área reservada para la imagen */
+}
+
+/* Estilo del spinner */
+.spinner {
+  border: 6px solid #f3f3f3; /* Color de fondo del borde */
+  border-top: 6px solid #007bff; /* Color del borde superior */
+  border-radius: 50%; /* Hacerlo circular */
+  width: 50px; /* Ancho del spinner */
+  height: 50px; /* Alto del spinner */
+  animation: spin 1s linear infinite; /* Animación de rotación */
+}
+
+/* Animación de rotación para el spinner */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.pet-counter {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
